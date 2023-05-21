@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '2.7.8'
 
 gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -32,7 +32,6 @@ group :development, :test do
   gem 'grade_runner', github: 'firstdraft/grade_runner'
   gem 'pry-rails'
   gem 'sqlite3', '~> 1.4.1'
-  gem 'table_print'
   gem 'web_git', github: 'firstdraft/web_git'
 end
 
