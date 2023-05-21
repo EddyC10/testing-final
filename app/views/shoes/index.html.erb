@@ -1,0 +1,15 @@
+  <h1>Feed</h1>
+
+<hr>
+
+<div class="row">
+  <% @shoes.each do |shoe| %>
+    <div class="col-md-10 offset-md-1">
+      <% if @current_user != nil %>
+        <%= render partial: "shoes/user_shoe", locals: { shoe: shoe }%>
+      <% else %>
+        <%= render partial: "shoes/shoe", locals: { shoe: shoe } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

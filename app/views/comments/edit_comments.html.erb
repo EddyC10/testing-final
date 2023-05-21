@@ -1,0 +1,11 @@
+<h1>Feed</h1>
+
+<hr>
+
+<div class="row">
+  <% @shoes.each do |shoe| %>
+    <div class="col-md-10 offset-md-1">
+      <%= render partial: "comments/edit_comments", locals: {shoe: shoe} %>
+    </div>
+  <% end %>
+</div>

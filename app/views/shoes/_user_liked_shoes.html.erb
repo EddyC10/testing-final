@@ -1,0 +1,127 @@
+<% if shoe.shoe == nil %>
+
+<% else %>
+
+<div class="card">
+  <div class="card-header">
+    <%#= link_to "Shoe ##{shoe.shoe.id}", liked_shoes_path, class: "h3" %>
+    <a href="/shoes/<%= shoe.shoe.id %>"><h3 class="text-success">View</h3></a>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+    <div class="col align-self-center">
+      <dl>
+        <dt>Image</dt>
+        <dd><img src="<%= shoe.shoe.image %>" height="280px"></dd>
+      </dl>
+    </div>
+
+    <div class="col">
+      <dl>
+        <dt>
+          Owner
+        </dt>
+        <dd>
+          <%= shoe.shoe.owner.username %>
+        </dd>
+
+        <dt>
+          Title
+        </dt>
+        <dd>
+          <%= shoe.shoe.title %>
+        </dd>
+
+        <dt>
+          Description
+        </dt>
+        <dd>
+          <%= shoe.shoe.description %>
+        </dd>
+
+        <dt>
+          Shoe type
+        </dt>
+        <dd>
+          <%= shoe.shoe.shoe_type %>
+        </dd>
+
+        <dt>
+          Size
+        </dt>
+        <dd>
+          <%= shoe.shoe.size %>
+        </dd>
+        
+
+        <dt>
+          Deadstock 
+        </dt>
+        <dd>
+          <%= shoe.shoe.deadstock %>
+        </dd>
+
+        <dt>
+          Authentic
+        </dt>
+        <dd>
+          <%= shoe.shoe.authentic %>
+        </dd>
+
+      </dl>
+    </div>
+    </div>
+
+    <div class="row">
+    <% if shoe.shoe.owner_id == @current_user.id %>
+      <div class="col">
+        <div class="d-grid">
+          <%= link_to edit_shoe_path(shoe.shoe.id), class: "btn btn-warning btn-lg btn-block" do %>
+            <span><i class="fa-regular fa-pen-to-square"></i></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-grid">
+          <%#= link_to shoe, method: :delete, class: "btn btn-danger btn-lg btn-block" do %>
+          <a href="/delete/<%= shoe.shoe.id %>" method="post" class="btn btn-danger btn-lg btn-block">
+            <span><i class="fa-regular fa-trash-can"></i></span>
+          </a>
+          <%# end %>
+        </div>
+      </div>
+      <% else%>
+      <% end %>
+    </div>
+
+    
+    <div class="row"><div class="d-grid btn btn-large btn-block"></div></div> <!-- Added an empty row to have buttons equally seperated -->
+
+    <div class="row">
+      <div class="col">
+          <div class="d-grid">
+            <form action="/user_unliked_shoe/<%= shoe.id%>" style="cursor: pointer">
+              <button class="btn btn-success btn-lg btn-block"><span><i class="fa-sharp fa-regular fa-heart fa-rotate-180"></i></span></button>
+            </form>
+          </div>
+        </div>
+
+
+      <div class="col">
+        <div class="d-grid">
+          <%#= link_to edit_shoe_path(shoe), class: "btn btn-dark btn-lg btn-block" do %>
+              <a href="/" class="btn btn-dark btn-lg btn-block"><span><i class="fa-sharp fa-solid fa-house"></i></span></a>
+            </form>
+          <%# end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    Last updated <%= time_ago_in_words(shoe.updated_at) %> ago
+  </div>
+</div>
+<div class="row"><div class="d-grid btn btn-large btn-block"></div></div>
+<% end %>

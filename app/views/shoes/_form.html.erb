@@ -1,0 +1,47 @@
+<%= form_with(model: @shoe) do |form| %>
+
+  <div>
+    <%= form.label :owner_id %>
+    <%= form.select :owner_id, [@current_user.id] %>
+  </div>
+
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :shoe_type %>
+    <%= form.select :shoe_type, @shoe_types %>
+  </div>
+
+  <div>
+    <%= form.label :size %>
+    <%= form.select :size, @sizes  %>
+  </div>
+
+  <div>
+    <%= form.label :deadstock %>
+    <%= form.check_box :deadstock %>    
+  </div>
+
+  <div>
+    <%= form.label :authentic %>
+    <%= form.check_box :authentic %>
+  </div>
+
+  <div>
+    <%= form.button "Add to Collection", class: "btn-success"%>
+  </div>
+
+<% end %>

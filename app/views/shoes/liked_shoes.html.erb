@@ -1,0 +1,9 @@
+<h1>Liked Shoes</h1>
+
+<hr>
+
+<% @current_user.likes.each do |shoe| %>
+  <div class="col-md-10 offset-md-1">
+      <%= render partial: "shoes/user_liked_shoes", locals: { shoe: shoe } %>
+  </div>
+<% end %>

@@ -1,0 +1,175 @@
+<div class="card">
+  <div class="card-header">
+    <%= link_to "View", shoe, class: "h3 text-success" %>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+    <div class="col align-self-center">
+      <dl>
+        <dt>Image</dt>
+        <dd><img src="<%= shoe.image %>" height="280px"></dd>
+      </dl>
+    </div>
+
+    <div class="col align-self-center">
+    <dl>
+     <dt>
+        Owner Id
+      </dt>
+      <dd>
+        <%= shoe.id %>
+      </dd>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= shoe.title %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= shoe.description %>
+      </dd>
+
+      <dt>
+        Shoe type
+      </dt>
+      <dd>
+        <%= shoe.shoe_type %>
+      </dd>
+
+      <dt>
+        Size
+      </dt>
+      <dd>
+        <%= shoe.size %>
+      </dd>
+      
+
+      <dt>
+        Deadstock 
+      </dt>
+      <dd>
+        <%= shoe.deadstock %>
+      </dd>
+
+      <dt>
+        Authentic
+      </dt>
+      <dd>
+        <%= shoe.authentic %>
+      </dd>
+
+    </dl>
+    </div>
+    </div>
+
+    <div class="row">
+      <% if shoe.owner_id == @current_user.id %>
+      <div class="col">
+        <div class="d-grid">
+          <%= link_to edit_shoe_path(shoe), class: "btn btn-warning btn-lg btn-block" do %>
+            <span><i class="fa-regular fa-pen-to-square"></i></span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="d-grid">
+          <%#= link_to shoe, method: :delete, class: "btn btn-danger btn-lg btn-block" do %>
+          <a href="/delete/<%= shoe.id %>" method="post" class="btn btn-danger btn-lg btn-block">
+            <span><i class="fa-regular fa-trash-can"></i></span>
+          </a>
+          <%# end %>
+        </div>
+      </div>
+      <% else %>
+      <% end %>
+    </div>
+  
+    
+    <div class="row"><div class="d-grid btn btn-large btn-block"></div></div> <!-- Added an empty row to have buttons equally seperated -->
+
+
+    <div class="row">
+    <% user_like =  @current_user.likes.where(shoe_id: shoe.id)[0] %>
+    <% if user_like == nil %>
+     <div class="col">
+        <div class="d-grid">
+          <form action="/user_liked_shoe" style="cursor: pointer">
+            <input type="hidden" name="shoe_id" value="<%= shoe.id %>">
+            <button class="btn btn-success btn-lg btn-block"<span><i class="fa-sharp fa-regular fa-heart"></i></span></button>
+          </form>
+        </div>
+      </div>
+    <% else %>
+    <div class="col">
+        <div class="d-grid">
+          <form action="/user_unliked_shoe/<%= shoe.id%>" style="cursor: pointer">
+            <button class="btn btn-success btn-lg btn-block"><span><i class="fa-sharp fa-regular fa-heart fa-rotate-180"></i></span></button>
+          </form>
+        </div>
+      </div>
+    <% end %>
+
+      <div class="col">
+        <div class="d-grid">
+          <%#= link_to edit_shoe_path(shoe), class: "btn btn-dark btn-lg btn-block" do %>
+              <a href="/" class="btn btn-dark btn-lg btn-block"><span><i class="fa-sharp fa-solid fa-house"></i></span></a>
+            </form>
+          <%# end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row"><div class="d-grid btn btn-large btn-block"></div></div> <!-- Added an empty row to have buttons equally seperated -->
+
+    <h3>Comments</h3>
+    <div class="row"><div class="d-grid btn btn-large btn-block"></div></div>
+
+
+
+    <% Comment.all.each do |comment|%>
+
+      <% if comment.shoe_id == shoe.id %>
+        <dl>
+          <div>
+            <dt><%= comment.user.username %></dt>
+            <% if comment.author_id == @current_user.id %>
+              <a href="/edit_comments" class="text-success"><span class="float-right"><i class="fa-solid fa-ellipsis fa-lg"></i></span></a>
+            <% else %>
+            <% end %>
+          </div>
+
+          <dd><%= comment.body %></dd>
+
+          <em class="fs-3 float-right"><%= time_ago_in_words(comment.created_at) %> ago</em>
+        </dl>
+      <% else %>
+      <% end %>
+
+    <% end %>
+
+    <form action="/insert_comment" method="post">
+
+      <input type="hidden" name="query_shoe_id" value="<%= shoe.id %>">
+
+      <label for="user_comment"></label>
+      <textarea id="user_comment" class="btn-block" style="border: 1.5px solid black" rows="3" placeholder="Enter text here" maxlength="100" name="query_comment"></textarea>
+
+      <div class="row"><div class="d-grid btn btn-large btn-block"></div></div> <!-- Added spacing for the button. Making it more appealing-->
+
+      <button class="border border-dark float-right bg-success text-light btn-sm" style="border-radius: 50px">Add comment</button>
+    </form>
+
+  </div>
+
+  <div class="card-footer">
+    Last updated <%= time_ago_in_words(shoe.updated_at) %> ago
+  </div>
+</div>
+
+<div class="row"><div class="d-grid btn btn-large btn-block"></div></div>

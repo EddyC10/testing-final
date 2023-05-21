@@ -1,0 +1,32 @@
+  <table border= 1>
+    <tr>
+      <th> Image </th>
+      <th> Title </th>
+      <th> Description </th>
+      <th> Shoe type </th>
+      <th> Size </th>
+      <th> Deadstock </th>
+      <th> Authentic </th>
+      <th> Created_at </th>
+      <th> Updated_at </th>
+      <th> Show details </th>
+    </tr>
+    <% @shoes.each do |shoe| %>
+
+    <tr>
+      <td> <img src="<%= shoe.image %>" width="150px" height="120"> </td>
+      <td> <%= shoe.title%> </td>
+      <td> <%= shoe.description %> </td>
+      <td> <%= shoe.shoe_type %> </td>
+      <td> <%= shoe.size %> </td>
+      <td> <%= shoe.deadstock %> </td>
+      <td> <%= shoe.authentic %> </td>
+      <td> <%= time_ago_in_words(shoe.created_at) %> ago </td>
+      <td> <%= time_ago_in_words(shoe.updated_at) %> ago </td>
+      <td>
+        <%= link_to "Show details", shoe %> 
+      </td>
+    </tr>
+
+    <% end %>
+</table>
