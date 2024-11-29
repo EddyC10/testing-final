@@ -87,13 +87,11 @@
           <%# end %>
         </div>
       </div>
-      <% else %>
-      <% end %>
+     <% else %>
+     <% end %>
     </div>
-
     
     <div class="row"><div class="d-grid btn btn-large btn-block"></div></div> <!-- Added an empty row to have buttons equally seperated -->
-
 
     <div class="row">
     <% user_like =  @current_user.likes.where(shoe_id: shoe.id)[0] %>
