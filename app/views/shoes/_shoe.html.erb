@@ -10,71 +10,71 @@
   <div class="card-body">
 
     <div class="row">
-    <div class="col">
-      <dl>
-        <dt class="">Image</dt>
-        <div class="btn btn-block"></div>
-        <dd class="text-center"><img src="<%= shoe.image %>" height="280px"></dd>
-      </dl>
-    </div>
-
-    <div class="col">
-    <dl>
-      <% if @current_user != nil %>
-      <dt>
-        Owner
-      </dt>
-      <dd>
-        <%= shoe.owner.username %>
-      </dd>
-      <% else %>
-      <% end %>
-
-      <dt>
-        Title
-      </dt>
-      <dd>
-        <%= shoe.title %>
-      </dd>
-
-      <dt>
-        Description
-      </dt>
-      <dd>
-        <%= shoe.description %>
-      </dd>
-
-      <dt>
-        Shoe type
-      </dt>
-      <dd>
-        <%= shoe.shoe_type %>
-      </dd>
-
-      <dt>
-        Size
-      </dt>
-      <dd>
-        <%= shoe.size %>
-      </dd>
-      
-
-      <dt>
-        Deadstock 
-      </dt>
-      <dd>
-        <%= shoe.deadstock %>
-      </dd>
-
-      <dt>
-        Authentic
-      </dt>
-      <dd>
-        <%= shoe.authentic %>
-      </dd>
-
-      </dl>
-    </div>
+	    <div class="col">
+	      <dl>
+	        <dt class="">Image</dt>
+	        <div class="btn btn-block"></div>
+	        <dd class="text-center"><img src="<%= shoe.image %>" height="280px"></dd>
+	      </dl>
+	    </div>
+	
+	    <div class="col">
+	    <dl>
+	      <% if @current_user != nil %>
+	      <dt>
+	        Owner
+	      </dt>
+	      <dd>
+	        <%= shoe.owner.username %>
+	      </dd>
+	      <% else %>
+	      <% end %>
+	
+	      <dt>
+	        Title
+	      </dt>
+	      <dd>
+	        <%= shoe.title %>
+	      </dd>
+	
+	      <dt>
+	        Description
+	      </dt>
+	      <dd>
+	        <%= shoe.description %>
+	      </dd>
+	
+	      <dt>
+	        Shoe type
+	      </dt>
+	      <dd>
+	        <%= shoe.shoe_type %>
+	      </dd>
+	
+	      <dt>
+	        Size
+	      </dt>
+	      <dd>
+	        <%= shoe.size %>
+	      </dd>
+	      
+	
+	      <dt>
+	        Deadstock 
+	      </dt>
+	      <dd>
+	        <%= shoe.deadstock %>
+	      </dd>
+	
+	      <dt>
+	        Authentic
+	      </dt>
+	      <dd>
+	        <%= shoe.authentic %>
+	      </dd>
+	
+	      </dl>
+	    </div>
     </div>
 
   </div>
